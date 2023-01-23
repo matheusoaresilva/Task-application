@@ -17,7 +17,7 @@ public class TaskModel implements Serializable {
     @Column(nullable = false)
     private String titulo;
 
-    @Column()
+    @Column(nullable = false)
     private String descricao;
 
     @Enumerated(EnumType.STRING)
