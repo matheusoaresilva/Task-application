@@ -34,6 +34,11 @@ public class TaskExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(GetException.class)
+    public final ResponseEntity<ErrorResponse> handleGetTaskException(GetException ex, WebRequest request) {
+        ErrorResponse error = new ErrorResponse("Erro ao buscar tarefa", ex.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
 
 
 }
