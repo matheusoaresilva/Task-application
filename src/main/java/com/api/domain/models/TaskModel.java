@@ -70,7 +70,8 @@ public class TaskModel implements Serializable {
         this.status = status;
     }
 
-    public TaskModel(){}
+    public TaskModel() {
+    }
 
     public TaskModel(Long id, String titulo, String descricao, TaskCategoria categoria, TaskStatus status) {
         this.id = id;
@@ -80,15 +81,6 @@ public class TaskModel implements Serializable {
         this.status = status;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof TaskModel taskModel)) return false;
-        return getId().equals(taskModel.getId());
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
 }
+

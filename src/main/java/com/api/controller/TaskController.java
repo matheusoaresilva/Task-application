@@ -1,5 +1,9 @@
 package com.api.controller;
 
+import com.api.controller.exception.CreateException;
+import com.api.controller.exception.DeleteException;
+import com.api.controller.exception.GetException;
+import com.api.controller.exception.UpdateException;
 import com.api.domain.models.TaskModel;
 import com.api.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,21 +24,30 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<TaskModel> saveTask(@RequestBody TaskModel task){
-        TaskModel savedTask = service.Create(task);
-        return new ResponseEntity<>(savedTask, HttpStatus.CREATED);
+        try {
+            TaskModel savedTask = service.Create(task);
+            return new ResponseEntity<>(savedTask, HttpStatus.CREATED);
+        }catch (Exception e) {
+            throw new CreateException("Erro ao salvar tarefa: " + e.getMessage());
+        }
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<TaskModel> getTaskById(@PathVariable Long id){
         Optional<TaskModel> task = service.getTaskById(id);
 
-        return task.map(model -> new ResponseEntity<>(model, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        if(!task.isPresent()){
+            throw new GetException("Tarefa com ID "+ id+ " não encontrada");
+        } return new ResponseEntity<>(task.get(), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id){
-         service.deleteById(id);
+        try{
+            service.deleteById(id);
+        }catch (Exception e){
+            throw new DeleteException("Erro ao excluir tarefa com ID "+ id +":" + e.getMessage());
+        }
     }
 
     @GetMapping
@@ -54,10 +67,13 @@ public class TaskController {
         Optional<TaskModel> currentTask = service.getTaskById(id);
 
         if (!currentTask.isPresent()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            throw  new UpdateException("Tarefa com ID " + id + " não encontrada.");
+        }try {
+            model.setId(id);
+            service.updateTask(model);
+        }catch (Exception e){
+                throw new UpdateException("Erro ao atualizar tarefa com ID "+ id + ": "+ e.getMessage());
         }
-        model.setId(id);
-        service.updateTask(model);
 
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
