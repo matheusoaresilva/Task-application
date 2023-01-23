@@ -25,7 +25,16 @@ public class TaskController {
     @PostMapping
     public ResponseEntity<TaskModel> saveTask(@RequestBody TaskModel task){
         if (task.getTitulo() == null || task.getTitulo().isEmpty()) {
-            throw new CreateException("Nome da tarefa não pode ser vazio");
+            throw new CreateException("Titulo da tarefa não pode ser vazio");
+        }
+        if (task.getDescricao()== null || task.getDescricao().isEmpty()){
+            throw new CreateException("A descrição não pode ser vazia");
+        }
+        if (task.getCategoria() == null){
+            throw new CreateException("A categoria não pode ser vazia");
+        }
+        if (task.getStatus() ==null){
+            throw new CreateException("O status não pode ser vazio");
         }
         try {
             TaskModel savedTask = service.Create(task);
