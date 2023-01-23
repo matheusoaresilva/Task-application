@@ -1,6 +1,6 @@
 # Task Application
 
-Este é um aplicativo de gerenciamento de tarefas desenvolvido que permite aos usuários criar, editar, excluir e listar tarefas. Cada tarefa possui um título, descrição, status e categoria.
+Este é um aplicativo de gerenciamento de tarefas desenvolvido que permite aos usuários criar, editar, excluir e listar tarefas. Cada tarefa possui um título, descrição, status e categoria. O objetivo deste projeto é fornecer uma ferramenta simples e eficiente para organizar e gerenciar as tarefas diárias.
 
 ## Funcionalidades
 
@@ -21,7 +21,10 @@ Este é um aplicativo de gerenciamento de tarefas desenvolvido que permite aos u
 
 ## Exceptions
 
-Além disso, o projeto também trata as exceptions, ou seja, quando um campo obrigatório não é preenchido, uma mensagem personalizada é retornada ao usuário. Foram criadas as classes exception para tratar esses casos específicos. O objetivo deste projeto é fornecer uma ferramenta simples e eficiente para organizar e gerenciar as tarefas diárias.
+Além disso, o projeto também trata as exceptions, ou seja, quando um campo obrigatório não é preenchido, uma mensagem personalizada é retornada ao usuário. Foram criadas as classes exception para tratar esses casos específicos. 
+
+Se houvesse tentativa de inserir os dados sem passar algum valor para o Titulo
+seria retornado a seguinte mensagem:
 
 ```
 {
@@ -29,6 +32,8 @@ Além disso, o projeto também trata as exceptions, ou seja, quando um campo obr
     "message": "Titulo da tarefa não pode ser vazio"
 }
 ```
+
+
 
 ## Dificuldades encontradas
 
