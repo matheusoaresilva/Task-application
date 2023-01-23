@@ -24,13 +24,17 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<TaskModel> saveTask(@RequestBody TaskModel task){
+        if (task.getTitulo() == null || task.getTitulo().isEmpty()) {
+            throw new CreateException("Nome da tarefa não pode ser vazio");
+        }
         try {
             TaskModel savedTask = service.Create(task);
             return new ResponseEntity<>(savedTask, HttpStatus.CREATED);
-        }catch (Exception e) {
-            throw new CreateException("Erro ao salvar tarefa: " + e.getMessage());
+        }catch (CreateException e) {
+            throw e;
         }
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<TaskModel> getTaskById(@PathVariable Long id){
