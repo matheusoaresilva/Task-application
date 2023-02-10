@@ -18,6 +18,7 @@ Este é um aplicativo de gerenciamento de tarefas desenvolvido que permite aos u
 - **Spring Boot**
 - **Postman**: para testar as funcionalidades da API
 - **MySQL**: para armazenar os dados das tarefas
+- **JUnit5** e **Mockito**: para escrever e executar testes unitários
 
 ## Exceptions
 
