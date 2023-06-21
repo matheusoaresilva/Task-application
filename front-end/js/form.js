@@ -20,6 +20,10 @@ document
   .getElementById("closeButton")
   .addEventListener("click", closeFloatingContainer);
 
+document
+.getElementById("saveButton")
+.addEventListener("click",closeFloatingContainer);
+
 // Enviar os dados do formulário para o back-end ao salvar
 const newTaskForm = document.getElementById("newTaskForm");
 

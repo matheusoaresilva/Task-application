@@ -31,12 +31,19 @@ function buscarTarefas() {
 
         const button = document.createElement("a");
         button.href = "#";
-        button.classList.add("btn", "btn-primary");
-        button.textContent = "Editar";
+        button.classList.add("btn", "btn", "me-2");
+        button.innerHTML = '<i class="fas fa-trash-alt"></i>';
+
+        const buttonB = document.createElement("a");
+        buttonB.href = "#";
+        buttonB.classList.add("btn", "btn");
+        buttonB.innerHTML = '<i class="fas fa-edit"></i>';
 
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardText);
         cardBody.appendChild(button);
+
+        cardBody.appendChild(buttonB);
 
         card.appendChild(cardHeader);
         card.appendChild(cardBody);

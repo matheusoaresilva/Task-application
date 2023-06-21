@@ -11,20 +11,24 @@
     />
     <link rel="stylesheet" href="/front-end/css/formStyle.css" />
     <link rel="stylesheet" href="/front-end/css/card.css" />
+    <link rel="stylesheet" href="/front-end/css/body.css">
     <title>Task Application</title>
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
-      <!-- Navbar content -->
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Task Application</a>
-        <button
-          class="btn btn-outline-success"
-          id="newTaskButton"
-          type="submit"
-        >
-          New task
-        </button>
+        <div class="d-flex align-items-center justify-content-between">
+          <form class="d-flex me-3">
+            <div class="form-group form-group-sm mb-0 me-2">
+              <input class="form-control form-control" type="search" placeholder="Search" aria-label="Search">
+            </div>
+            <button class="btn btn-outline-success btn" type="submit">Search</button>
+          </form>
+          <button class="btn btn-outline-success btn" id="newTaskButton" type="submit">
+            New task
+          </button>
+        </div>
       </div>
     </nav>
     <div class="container">
@@ -60,27 +64,28 @@
           </div>
           <div class="form-group">
             <label for="categoriaInput">Categoria</label>
-            <input
-              type="text"
-              class="form-control"
-              id="categoriaInput"
-              placeholder="Digite a categoria da tarefa"
-              required
-            />
+            <select class="form-control" id="categoriaInput" required>
+              <option value="PESSOAL">Pessoal</option>
+              <option value="TRABALHO">Trabalho</option>
+              <option value="ESTUDOS">Estudos</option>
+              <option value="FINANCAS">Finanças</option>
+              <option value="HOBBIES">Hobbies</option>
+            </select>
+            
           </div>
           <div class="form-group">
             <label for="statusInput">Status</label>
             <select class="form-control" id="statusInput" required>
               <option value="EM_ANDAMENTO">Em andamento</option>
-              <option value="CONCLUIDA">Concluído</option>
-              <option value="ATRASADA">Concluído</option>
-              <option value="CANCELADA">Concluído</option>
-              <option value="CONCLUIDA">Concluído</option>
+              <option value="CONCLUIDA">Concluída</option>
+              <option value="ATRASADA">Atrasada</option>
+              <option value="CANCELADA">Cancelada</option>
+              <option value="A_FAZER">A Fazer</option>
             </select>
           </div>
 
-          <button type="submit" class="btn btn-primary">Salvar</button>
-          <button type="button" class="btn btn-secondary" id="closeButton">
+          <button type="submit" class="btn save btn-primary" id="saveButton" >Salvar</button>
+          <button type="button" class="btn cancel btn-secondary" id="closeButton">
             Cancelar
           </button>
         </form>
@@ -93,6 +98,7 @@
     <script src="js/form.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://kit.fontawesome.com/a3868faae4.js" crossorigin="anonymous"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
