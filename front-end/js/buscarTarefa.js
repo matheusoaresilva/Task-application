@@ -1,12 +1,18 @@
-// Função para buscar todas as tarefas do back-end
+let allTasks = [];
+let taskContainersQueue = [];
+
+
 function buscarTarefas() {
   axios
     .get("http://localhost:8080/tasks/all")
     .then((response) => {
       const data = response.data;
       const container = document.getElementById("container-tarefas");
-      container.innerHTML = ""; // Limpar o container
- 
+      container.innerHTML = ""; 
+
+      allTasks = []; 
+      taskContainersQueue = []; 
+
       data.forEach((tarefa) => {
         const cardDiv = document.createElement("div");
         cardDiv.classList.add("col-md-3", "custom-margin");
@@ -42,7 +48,6 @@ function buscarTarefas() {
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardText);
         cardBody.appendChild(button);
-
         cardBody.appendChild(buttonB);
 
         card.appendChild(cardHeader);
@@ -51,14 +56,18 @@ function buscarTarefas() {
         cardDiv.appendChild(card);
 
         container.appendChild(cardDiv);
+
+        allTasks.push(cardDiv); 
+        taskContainersQueue.push(cardDiv); 
       });
+
+      s
+      updateTaskContainersDisplay();
     })
     .catch((error) => {
       console.error("Erro ao buscar tarefas:", error);
     });
 }
-
-// Evento de carregamento da página
 window.onload = function () {
   buscarTarefas();
 };

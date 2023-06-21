@@ -1,25 +1,58 @@
+function updateTaskContainersDisplay() {
+    const container = document.getElementById("container-tarefas");
+    container.innerHTML = ""; 
+  
+   
+    taskContainersQueue.forEach((taskContainer) => {
+      container.appendChild(taskContainer);
+    });
+  }
 
-function searchByTitle(query) {
-    const tasks = document.getElementsByClassName("card");
+
+function searchTasks(term) {
+    const filteredTasks = [];
   
-    for (let i = 0; i < tasks.length; i++) {
-      const task = tasks[i];
-      const titleElement = task.getElementsByClassName("card-title")[0];
-      const title = titleElement.textContent.toLowerCase();
+   
+    allTasks.forEach((taskContainer) => {
+      const title = taskContainer.querySelector(".card-title").textContent.toLowerCase();
   
-      if (title.includes(query.toLowerCase())) {
-        task.style.display = "block"; 
+      if (title.includes(term.toLowerCase())) {
+        taskContainer.style.display = "block";
+        filteredTasks.push(taskContainer);
       } else {
-        task.style.display = "none"; 
+        taskContainer.style.display = "none";
       }
+    });
+  
+   
+    if (term !== "") {
+      taskContainersQueue = filteredTasks;
+    } else {
+      taskContainersQueue = allTasks;
     }
-  }
-  function handleSearchInputChange(event) {
-    const query = event.target.value; 
-    searchByTitle(query); 
+  
+    
+    updateTaskContainersDisplay();
   }
   
-  // Adiciona um ouvinte de evento para o campo de pesquisa
+
+  function handleSearchInputChange(event) {
+    const query = event.target.value.trim(); 
+    searchTasks(query);
+  }
+  
+
   const searchInput = document.querySelector('input[type="search"]');
   searchInput.addEventListener("input", handleSearchInputChange);
   
+
+  function resetTaskContainersDisplay() {
+    searchInput.value = ""; 
+    searchTasks(""); 
+  }
+ 
+  searchInput.addEventListener("keydown", (event) => {
+    if (event.keyCode === 8 && searchInput.value === "") {
+      resetTaskContainersDisplay();
+    }
+  });
