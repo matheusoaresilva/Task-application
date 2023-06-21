@@ -17,12 +17,13 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/tasks", produces = "application/json")
+@CrossOrigin("*")
 public class TaskController {
 
     @Autowired
     private TaskService service;
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<TaskModel> saveTask(@RequestBody TaskModel task){
         if (task.getTitulo() == null || task.getTitulo().isEmpty()) {
             throw new CreateException("Titulo da tarefa não pode ser vazio");
@@ -63,7 +64,7 @@ public class TaskController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity <List<TaskModel>> findAll(){
         List<TaskModel> tasks= service.findAll();
 
