@@ -32,7 +32,7 @@ function buscarTarefas() {
         const button = document.createElement("a");
         button.href = "#";
         button.classList.add("btn", "btn-primary");
-        button.textContent = "Ed";
+        button.textContent = "Editar";
 
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardText);
