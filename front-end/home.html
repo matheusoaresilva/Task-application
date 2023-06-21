@@ -93,10 +93,26 @@
       </div>
     </div>
 
+    <!-- Formulário flutuante de exclusão -->
+<div class="floating-container delete-task" id="deleteTaskContainer">
+  <div class="form-container">
+    <h2>Delete Task</h2>
+
+    <p>Deseja realmente deletar essa task?</p>
+
+    <div class="button-container">
+      <button type="button" class="btn confirm-delete" id="confirmDeleteButton">Yes</button>
+      <button type="button" class="btn cancel-delete" id="cancelDeleteButton">No</button>
+    </div>
+  </div>
+</div>
+
+
     <!-- Sobreposição escura -->
     <div class="dark-overlay"></div>
     
     <script src="js/form.js"></script>
+    <script src="js/deleteTask.js"></script>
     <script src="js/search.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

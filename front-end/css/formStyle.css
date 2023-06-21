@@ -150,3 +150,8 @@
     z-index: 9999;
     display: none;
 }
+
+/* Estilos para o formulário de exclusão */
+.delete-task {
+  display: none;
+}
