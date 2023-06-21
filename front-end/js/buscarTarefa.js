@@ -16,6 +16,8 @@ function buscarTarefas() {
         const cardDiv = document.createElement("div");
         cardDiv.classList.add("col-md-3", "custom-margin");
 
+        cardDiv.dataset.taskId = tarefa.id;
+
         const card = document.createElement("div");
         card.classList.add("card");
 
@@ -41,19 +43,28 @@ function buscarTarefas() {
 
         // Adicione um evento de clique ao botão de lixeira
         button.addEventListener("click", function () {
-          showDeleteTaskForm();
+          showDeleteTaskForm(cardDiv.dataset.taskId);
         });
 
-        // Função para exibir o formulário flutuante e a sobreposição escura
-        function showDeleteTaskForm() {
-          document.getElementById("deleteTaskContainer").classList.add("show");
-          document.querySelector(".dark-overlay").style.display = "block";
+        // Função para exibir o formulário de exclusão da tarefa
+        function showDeleteTaskForm(taskId) {
+          const deleteTaskContainer = document.getElementById("deleteTaskContainer");
+          const darkOverlay = document.querySelector(".dark-overlay");
+
+          // Atribuir o ID da tarefa ao contêiner de exclusão como um atributo de dados
+          deleteTaskContainer.dataset.taskId = taskId;
+
+          deleteTaskContainer.classList.add("show");
+          darkOverlay.style.display = "block";
         }
 
-        // Função para fechar o formulário flutuante e remover a sobreposição escura
+        // Função para ocultar o formulário de exclusão da tarefa
         function hideDeleteTaskForm() {
-          document.getElementById("deleteTaskContainer").classList.remove("show");
-          document.querySelector(".dark-overlay").style.display = "none";
+          const deleteTaskContainer = document.getElementById("deleteTaskContainer");
+          const darkOverlay = document.querySelector(".dark-overlay");
+
+          deleteTaskContainer.classList.remove("show");
+          darkOverlay.style.display = "none";
         }
 
         const cancelDeleteButton = document.getElementById("cancelDeleteButton");
@@ -65,13 +76,21 @@ function buscarTarefas() {
         });
 
         // Evento de clique no botão de confirmar exclusão
-        confirmDeleteButton.addEventListener("click", function () {
-          // TODO logica excluir task
+        document.getElementById("confirmDeleteButton").addEventListener("click", function () {
+          const taskId = document.getElementById("deleteTaskContainer").dataset.taskId; // Obter o ID da tarefa
 
-          // Após excluir a tarefa, você pode recarregar as tarefas
-          buscarTarefas();
-
-          hideDeleteTaskForm();
+          // Excluir a tarefa do banco de dados usando o Axios
+          axios
+            .delete(`http://localhost:8080/tasks/${taskId}`)
+            .then(() => {
+              // Após excluir a tarefa, recarregue as tarefas
+              buscarTarefas();
+              hideDeleteTaskForm();
+              console.log("task with id " + taskId + " deleted");
+            })
+            .catch((error) => {
+              console.error("Erro ao excluir tarefa:", error);
+            });
         });
 
 
