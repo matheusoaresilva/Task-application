@@ -16,9 +16,15 @@ Este é um aplicativo de gerenciamento de tarefas desenvolvido que permite aos u
 
 - **Java 17**
 - **Spring Boot**
-- **Postman**: para testar as funcionalidades da API
-- **MySQL**: para armazenar os dados das tarefas
-- **JUnit5** e **Mockito**: para escrever e executar testes unitários
+- **Postman**: para testar as funcionalidades da API.
+- **MySQL**: para armazenar os dados das tarefas.
+- **JUnit5** e **Mockito**: para escrever e executar testes unitários.
+
+- **HTML5**: para estruturar a página e os elementos do formulário.
+- **CSS3**: para estilizar os elementos e criar o layout responsivo.
+- **JavaScript**: para adicionar interatividade e manipular os dados do formulário.
+- **Bootstrap 5**: para adicionar estilos responsivos e componentes pré-estilizados.
+
 
 ## Exceptions
 
