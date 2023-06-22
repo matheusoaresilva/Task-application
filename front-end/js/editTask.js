@@ -39,6 +39,13 @@ function ocultarFormularioEditarTarefa() {
     containerEditarTarefa.classList.remove("show");
     darkOverlay.style.display = "none";
 }
+
+// Evento de clique no botão "Fechar"
+document
+  .getElementById("editCancelButton")
+  .addEventListener("click", ocultarFormularioEditarTarefa);
+
+
   // Evento de escuta para o formulário de edição de tarefa
   document.getElementById("editTaskForm").addEventListener("submit", function (event) {
     event.preventDefault();
