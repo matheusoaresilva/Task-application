@@ -105,6 +105,19 @@ function buscarTarefas() {
         buttonB.classList.add("btn", "btn");
         buttonB.innerHTML = '<i class="fas fa-edit buttonEdit"></i>';
 
+
+        if (tarefa.status === 'A_FAZER') {
+          cardStatus.classList.add('status-a-fazer');
+        } else if (tarefa.status === 'EM_ANDAMENTO') {
+          cardStatus.classList.add('status-em-andamento');
+        } else if (tarefa.status === 'CONCLUIDA') {
+          cardStatus.classList.add('status-concluida');
+        } else if (tarefa.status === 'ATRASADA') {
+          cardStatus.classList.add('status-atrasada');
+        } else if (tarefa.status === 'CANCELADA') {
+          cardStatus.classList.add('status-cancelada');
+        }
+
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardText);
         cardBody.appendChild(cardStatus);

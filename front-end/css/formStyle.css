@@ -177,3 +177,130 @@ button:hover {
   margin: 0;
 }
 
+
+.status-a-fazer {
+  background-color: #4a90e2;
+  color: #ffffff;
+}
+
+.status-em-andamento {
+  background-color: #7ed321;
+  color: #ffffff;
+}
+
+.status-concluida {
+  background-color: #f5a623;
+  color: #ffffff;
+}
+
+.status-atrasada {
+  background-color: #d0021b;
+  color: #ffffff;
+}
+
+.status-cancelada {
+  background-color: #9b9b9b;
+}
+
+
+.card {
+  position: relative;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+.card-text {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.card-status {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  animation: pulse 2s infinite;
+}
+
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.buttonContainer a {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #4a90e2;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.buttonContainer a:hover {
+  background-color: #357bd8;
+}
+
+
+/* primeira opcao de estilizacao */
+/* .card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.card-header {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card-body {
+  font-size: 14px;
+}
+
+.card-title {
+  margin-bottom: 5px;
+}
+
+.card-text {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.card-status {
+  font-style: italic;
+}
+
+.buttonTrash {
+  color: red;
+} */
