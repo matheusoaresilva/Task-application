@@ -36,6 +36,10 @@ function buscarTarefas() {
         cardText.classList.add("card-text");
         cardText.textContent = tarefa.descricao;
 
+        const cardStatus = document.createElement("p");
+        cardStatus.classList.add("card-status");
+        cardStatus.textContent = tarefa.status;
+
         const button = document.createElement("a");
         button.href = "#";
         button.classList.add("btn", "btn", "me-2");
@@ -99,10 +103,11 @@ function buscarTarefas() {
         const buttonB = document.createElement("a");
         buttonB.href = "#";
         buttonB.classList.add("btn", "btn");
-        buttonB.innerHTML = '<i class="fas fa-edit"></i>';
+        buttonB.innerHTML = '<i class="fas fa-edit buttonEdit"></i>';
 
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardText);
+        cardBody.appendChild(cardStatus);
         cardBody.appendChild(button);
         cardBody.appendChild(buttonB);
 
@@ -147,51 +152,5 @@ window.onload = function () {
   // Verificar se a lista de tasks está vazia e exibir a mensagem "Não há nenhuma task"
   updateTaskContainersDisplay();
 
-  const deleteTaskContainer = document.getElementById("deleteTaskContainer");
-  const darkOverlay = document.querySelector(".dark-overlay");
-
-  // Evento de clique no botão de cancelar exclusão
-  document.getElementById("cancelDeleteButton").addEventListener("click", function () {
-    hideDeleteTaskForm();
-  });
-
-  // Evento de clique no botão de confirmar exclusão
-  document.getElementById("confirmDeleteButton").addEventListener("click", function () {
-    const taskId = deleteTaskContainer.dataset.taskId; // Obter o ID da tarefa
-
-    // Excluir a tarefa do banco de dados usando o Axios
-    axios
-      .delete(`http://localhost:8080/tasks/${taskId}`)
-      .then(() => {
-        // Após excluir a tarefa, remover o contêiner da tarefa e atualizar a exibição
-        const deletedTaskIndex = allTasks.findIndex((task) => task.dataset.taskId === taskId);
-        if (deletedTaskIndex !== -1) {
-          allTasks.splice(deletedTaskIndex, 1);
-        }
-        taskContainersQueue = allTasks.slice();
-
-        container.removeChild(deleteTaskContainer.parentElement);
-
-        hideDeleteTaskForm();
-        console.log("task with id " + taskId + " deleted");
-
-        updateTaskContainersDisplay();
-      })
-      .catch((error) => {
-        console.error("Erro ao excluir tarefa:", error);
-      });
-  });
-
-  // Função para exibir o formulário de exclusão da tarefa
-  function showDeleteTaskForm(taskId) {
-    deleteTaskContainer.dataset.taskId = taskId;
-    deleteTaskContainer.classList.add("show");
-    darkOverlay.style.display = "block";
-  }
-
-  // Função para ocultar o formulário de exclusão da tarefa
-  function hideDeleteTaskForm() {
-    deleteTaskContainer.classList.remove("show");
-    darkOverlay.style.display = "none";
-  }
+  
 };

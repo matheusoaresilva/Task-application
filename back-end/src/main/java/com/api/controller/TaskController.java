@@ -85,10 +85,12 @@ public class TaskController {
         }try {
             model.setId(id);
             service.updateTask(model);
+            System.out.println("Atualizada SETADO id: " + id);
         }catch (Exception e){
                 throw new UpdateException("Erro ao atualizar tarefa com ID "+ id + ": "+ e.getMessage());
         }
 
+        System.out.println("Atualizada id: " + id);
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
 }

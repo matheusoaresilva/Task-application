@@ -109,11 +109,55 @@
   </div>
 </div>
 
+<!-- Formulário flutuante de edição-->
+<div class="edit-task-container floating-container">
+  <div class="form-container">
+
+    <h2>Edit Task</h2>
+
+    <form id="editTaskForm">
+      <div class="form-group">
+        <label for="editTituloInput">Título</label>
+        <input type="text" class="form-control" id="editTituloInput" placeholder="Digite o título da tarefa" required>
+      </div>
+      <div class="form-group">
+        <label for="editDescricaoInput">Descrição</label>
+        <textarea class="form-control" id="editDescricaoInput" rows="3" placeholder="Digite a descrição da tarefa" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="editCategoriaInput">Categoria</label>
+        <select class="form-control editcategory" id="editCategoriaInput" required>
+          <option value="PESSOAL">Pessoal</option>
+          <option value="TRABALHO">Trabalho</option>
+          <option value="ESTUDOS">Estudos</option>
+          <option value="FINANCAS">Finanças</option>
+          <option value="HOBBIES">Hobbies</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="editStatusInput">Status</label>
+        <select class="form-control" id="editStatusInput" required>
+          <option value="EM_ANDAMENTO">Em andamento</option>
+          <option value="CONCLUIDA">Concluída</option>
+          <option value="ATRASADA">Atrasada</option>
+          <option value="CANCELADA">Cancelada</option>
+          <option value="A_FAZER">A Fazer</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-editsave btn-primary">Salvar</button>
+      <button type="button" class="btn btn-editcancel btn-secondary" id="editCancelButton">Cancelar</button>
+    </form>
+  </div>
+  </div>
+  
+
 
     <!-- Sobreposição escura -->
     <div class="dark-overlay"></div>
     
     <script src="js/form.js"></script>
+    <script src="js/editTask.js"></script>
     <script src="js/deleteTask.js"></script>
     <script src="js/search.js"></script>
 
