@@ -156,3 +156,24 @@ button:hover {
 .delete-task {
   display: none;
 }
+
+#noTaskMessage {
+  display: none;
+}
+
+.no-task-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.no-task-message h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #5b5b5b;
+  text-align: center;
+  padding: 10px;
+  margin: 0;
+}
+

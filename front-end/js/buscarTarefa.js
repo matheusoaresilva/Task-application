@@ -76,7 +76,7 @@ function buscarTarefas() {
         });
 
         // Evento de clique no botão de confirmar exclusão
-        document.getElementById("confirmDeleteButton").addEventListener("click", function () {
+        confirmDeleteButton.addEventListener("click", function () {
           const taskId = document.getElementById("deleteTaskContainer").dataset.taskId; // Obter o ID da tarefa
 
           // Excluir a tarefa do banco de dados usando o Axios
@@ -87,12 +87,13 @@ function buscarTarefas() {
               buscarTarefas();
               hideDeleteTaskForm();
               console.log("task with id " + taskId + " deleted");
+
+              updateTaskContainersDisplay();
             })
             .catch((error) => {
               console.error("Erro ao excluir tarefa:", error);
             });
         });
-
 
         // botao editar
         const buttonB = document.createElement("a");
@@ -123,6 +124,74 @@ function buscarTarefas() {
     });
 }
 
+function updateTaskContainersDisplay() {
+  const noTaskMessage = document.getElementById("noTaskMessage");
+
+  if (taskContainersQueue.length === 0) {
+    // Exibir a mensagem "Não há nenhuma task"
+    if (noTaskMessage) {
+      noTaskMessage.style.display = "block";
+    }
+  } else {
+    // Ocultar a mensagem "Não há nenhuma task"
+    if (noTaskMessage) {
+      noTaskMessage.style.display = "none";
+    }
+  }
+}
+
 window.onload = function () {
   buscarTarefas();
+  console.log("Testando texto no task");
+
+  // Verificar se a lista de tasks está vazia e exibir a mensagem "Não há nenhuma task"
+  updateTaskContainersDisplay();
+
+  const deleteTaskContainer = document.getElementById("deleteTaskContainer");
+  const darkOverlay = document.querySelector(".dark-overlay");
+
+  // Evento de clique no botão de cancelar exclusão
+  document.getElementById("cancelDeleteButton").addEventListener("click", function () {
+    hideDeleteTaskForm();
+  });
+
+  // Evento de clique no botão de confirmar exclusão
+  document.getElementById("confirmDeleteButton").addEventListener("click", function () {
+    const taskId = deleteTaskContainer.dataset.taskId; // Obter o ID da tarefa
+
+    // Excluir a tarefa do banco de dados usando o Axios
+    axios
+      .delete(`http://localhost:8080/tasks/${taskId}`)
+      .then(() => {
+        // Após excluir a tarefa, remover o contêiner da tarefa e atualizar a exibição
+        const deletedTaskIndex = allTasks.findIndex((task) => task.dataset.taskId === taskId);
+        if (deletedTaskIndex !== -1) {
+          allTasks.splice(deletedTaskIndex, 1);
+        }
+        taskContainersQueue = allTasks.slice();
+
+        container.removeChild(deleteTaskContainer.parentElement);
+
+        hideDeleteTaskForm();
+        console.log("task with id " + taskId + " deleted");
+
+        updateTaskContainersDisplay();
+      })
+      .catch((error) => {
+        console.error("Erro ao excluir tarefa:", error);
+      });
+  });
+
+  // Função para exibir o formulário de exclusão da tarefa
+  function showDeleteTaskForm(taskId) {
+    deleteTaskContainer.dataset.taskId = taskId;
+    deleteTaskContainer.classList.add("show");
+    darkOverlay.style.display = "block";
+  }
+
+  // Função para ocultar o formulário de exclusão da tarefa
+  function hideDeleteTaskForm() {
+    deleteTaskContainer.classList.remove("show");
+    darkOverlay.style.display = "none";
+  }
 };
