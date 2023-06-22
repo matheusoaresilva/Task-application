@@ -1,6 +1,7 @@
 .navbar {
   background-color: #4a154b;
   padding: 10px;
+  margin-bottom: 20px;
 }
 
 .navbar-brand {
@@ -8,6 +9,9 @@
   color: #fff;
 }
 
+.card {
+  margin-bottom: 20px;
+}
 
 
 .btn-outline-success {
@@ -271,36 +275,3 @@ button:hover {
 }
 
 
-/* primeira opcao de estilizacao */
-/* .card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.card-header {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.card-body {
-  font-size: 14px;
-}
-
-.card-title {
-  margin-bottom: 5px;
-}
-
-.card-text {
-  color: #666;
-  margin-bottom: 10px;
-}
-
-.card-status {
-  font-style: italic;
-}
-
-.buttonTrash {
-  color: red;
-} */
