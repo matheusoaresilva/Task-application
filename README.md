@@ -1,4 +1,4 @@
-# Task Application(Em desenvolvimento)
+# Task Application
 
 Este é um aplicativo de gerenciamento de tarefas desenvolvido que permite aos usuários criar, editar, excluir e listar tarefas. Cada tarefa possui um título, descrição, status e categoria. O objetivo deste projeto é fornecer uma ferramenta simples e eficiente para organizar e gerenciar as tarefas diárias.
 
