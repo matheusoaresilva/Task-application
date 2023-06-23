@@ -104,3 +104,9 @@ body {
   background-color: #f8f8f8;
   color: #333;
 }
+
+/* Estilo para a animação de carregamento */
+#loading-animation {
+  display: none;
+  /* Adicione estilos personalizados aqui */
+}
