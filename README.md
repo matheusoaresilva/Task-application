@@ -1,4 +1,4 @@
-# Task Application(Em desenvolvimento)
+# Task Application
 
 Este é um aplicativo de gerenciamento de tarefas desenvolvido que permite aos usuários criar, editar, excluir e listar tarefas. Cada tarefa possui um título, descrição, status e categoria. O objetivo deste projeto é fornecer uma ferramenta simples e eficiente para organizar e gerenciar as tarefas diárias.
 
@@ -11,7 +11,17 @@ Este é um aplicativo de gerenciamento de tarefas desenvolvido que permite aos u
 - **Excluir tarefa**: Os usuários podem excluir tarefas existentes.
 
 - **Listar tarefas**: Os usuários podem ver uma lista de todas as tarefas existentes, ordenadas por data de criação ou categoria.
+- **Buscar Tasks**: Buscar tasks pelo titulo.
 
+![Interface](https://github.com/matheusoaresilva/Task-application/blob/main/front-end/img/taskapp.png)
+
+### Adicionar Nova Task
+
+![new](https://github.com/matheusoaresilva/Task-application/blob/main/front-end/img/taskapp-new.png)
+
+
+### Deletar Task
+![delete](https://github.com/matheusoaresilva/Task-application/blob/main/front-end/img/taskapp-delete.png)
 ## Utilizados nesse projeto:
 
 - **Java 17**
