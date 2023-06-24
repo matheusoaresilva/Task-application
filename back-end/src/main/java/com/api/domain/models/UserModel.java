@@ -1,14 +1,17 @@
 package com.api.domain.models;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,6 +30,9 @@ public class UserModel implements UserDetails {
 	private String name;
 	private String username;
 	private String password;
+	
+//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private List<TaskModel> tasks;
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -69,6 +75,11 @@ public class UserModel implements UserDetails {
 	public UserModel() {
 		super();
 	}
+
+
+	
+	
+	
 	public UserModel(Long id, String name, String username, String password) {
 		super();
 		this.id = id;
@@ -94,6 +105,13 @@ public class UserModel implements UserDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+//	public List<TaskModel> getTasks() {
+//		return tasks;
+//	}
+//	public void setTasks(List<TaskModel> tasks) {
+//		this.tasks = tasks;
+//	}
+	
 	
 	
 

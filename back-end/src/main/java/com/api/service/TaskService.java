@@ -1,6 +1,7 @@
 package com.api.service;
 
 import com.api.domain.models.TaskModel;
+import com.api.domain.models.UserModel;
 import com.api.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,4 +34,9 @@ public class TaskService {
     public void deleteById(Long id){
         repository.deleteById(id);
     }
+
+    public List<TaskModel> findByUser(UserModel currentUser) {
+        return repository.findByUser(currentUser);
+    }
+
 }

@@ -10,8 +10,6 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/front-end/css/formStyle.css" />
-    <link rel="stylesheet" href="/front-end/css/card.css" />
-    <link rel="stylesheet" href="/front-end/css/body.css">
     <link rel="shortcut icon" href="/front-end/img/favicon.png" type="image/x-icon">
     <title>Task Application</title>
   </head>
@@ -26,7 +24,7 @@
             </div>
             <button class="btn btn-outline-success btn" type="submit">Search</button>
           </form>
-          <button class="btn btn-outline-success btn" id="newTaskButton" type="submit">
+          <button class="btn btn-outline-success btn newTaskButton" id="newTaskButton" type="submit">
             New task
           </button>
         </div>
@@ -157,10 +155,11 @@
     <!-- Sobreposição escura -->
     <div class="dark-overlay"></div>
     
-    <script src="js/form.js"></script>
-    <script src="js/editTask.js"></script>
-    <script src="js/deleteTask.js"></script>
-    <script src="js/search.js"></script>
+    <script src="/front-end/js/form.js" type="text/javascript"></script>
+<script src="/front-end/js/editTask.js" type="text/javascript"></script>
+<script src="/front-end/js/allTasks.js" type="text/javascript"></script>
+<script src="/front-end/js/search.js" type="text/javascript"></script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://kit.fontawesome.com/a3868faae4.js" crossorigin="anonymous"></script>
@@ -169,6 +168,5 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <script src="js/buscarTarefa.js"></script>
   </body>
 </html>

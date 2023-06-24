@@ -2,12 +2,23 @@ let allTasks = [];
 let taskContainersQueue = [];
 
 function buscarTarefas() {
+  const username = localStorage.getItem('username');
+  const token = localStorage.getItem('token');
+
+  const authHeader = 'Bearer ' + token;
+
   axios
-    .get("http://localhost:8080/tasks/all")
+    .get("http://localhost:8080/tasks/all", {
+      headers: {
+        Authorization: authHeader
+      }
+    })
     .then((response) => {
       const data = response.data;
       const container = document.getElementById("container-tarefas");
       container.innerHTML = "";
+
+      console.log("Teste all tasks")
 
       allTasks = [];
       taskContainersQueue = [];

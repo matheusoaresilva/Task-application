@@ -10,7 +10,12 @@ import java.util.Objects;
 @Entity(name = "Task")
 public class TaskModel implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -27,9 +32,23 @@ public class TaskModel implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TaskStatus status;
+    
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserModel user;
+ 
+    
 
 
-    public Long getId() {
+    public UserModel getUser() {
+		return user;
+	}
+
+	public void setUser(UserModel user) {
+		this.user = user;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -73,13 +92,18 @@ public class TaskModel implements Serializable {
     public TaskModel() {
     }
 
-    public TaskModel(Long id, String titulo, String descricao, TaskCategoria categoria, TaskStatus status) {
-        this.id = id;
-        this.titulo = titulo;
-        this.descricao = descricao;
-        this.categoria = categoria;
-        this.status = status;
-    }
+	public TaskModel(Long id, String titulo, String descricao, TaskCategoria categoria, TaskStatus status,
+			UserModel user) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.categoria = categoria;
+		this.status = status;
+		this.user = user;
+	}
+
+    
 
 
 }

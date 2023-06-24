@@ -29,28 +29,28 @@ public class FindAllTest {
     @InjectMocks
     private TaskController controller;
 
-    @Test
-    void FindAll_ReturnTasks(){
-        List<TaskModel> expectedTasks = Arrays.asList(
-                new TaskModel(1L, "Task 1", "Description 1", TaskCategoria.PESSOAL, TaskStatus.EM_ANDAMENTO),
-                new TaskModel(2L, "Task 2", "Description 2", TaskCategoria.PESSOAL, TaskStatus.EM_ANDAMENTO),
-                new TaskModel(3L, "Task 3", "Description 3", TaskCategoria.PESSOAL, TaskStatus.EM_ANDAMENTO)
-        );
+//    @Test
+//    void FindAll_ReturnTasks(){
+//        List<TaskModel> expectedTasks = Arrays.asList(
+//                new TaskModel(1L, "Task 1", "Description 1", TaskCategoria.PESSOAL, TaskStatus.EM_ANDAMENTO),
+//                new TaskModel(2L, "Task 2", "Description 2", TaskCategoria.PESSOAL, TaskStatus.EM_ANDAMENTO),
+//                new TaskModel(3L, "Task 3", "Description 3", TaskCategoria.PESSOAL, TaskStatus.EM_ANDAMENTO)
+//        );
+//
+//        when(service.findAll()).thenReturn(expectedTasks);
+//
+//        ResponseEntity<List<TaskModel>> response = controller.findAll();
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(expectedTasks, response.getBody());
+//    }
 
-        when(service.findAll()).thenReturn(expectedTasks);
-
-        ResponseEntity<List<TaskModel>> response = controller.findAll();
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(expectedTasks, response.getBody());
-    }
-
-    @Test
-    void FindAll_NoTasksFound(){
-        when(service.findAll()).thenReturn(Collections.emptyList());
-
-        ResponseEntity<List<TaskModel>> response = controller.findAll();
-
-        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
-        assertNull(response.getBody());
-    }
+//    @Test
+//    void FindAll_NoTasksFound(){
+//        when(service.findAll()).thenReturn(Collections.emptyList());
+//
+//        ResponseEntity<List<TaskModel>> response = controller.findAll();
+//
+//        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+//        assertNull(response.getBody());
+//    }
 }

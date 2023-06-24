@@ -1,7 +1,13 @@
+document.addEventListener("DOMContentLoaded", function() {
+  // Seu código JavaScript aqui
+
+
+
 // Função para exibir o formulário flutuante e a sobreposição escura
 function showFloatingContainer() {
   document.getElementById("floatingContainer").classList.add("show");
   document.querySelector(".dark-overlay").style.display = "block";
+  console.log("teste showFloatingContainer")
 }
 
 // Função para fechar o formulário flutuante e remover a sobreposição escura
@@ -62,4 +68,5 @@ newTaskForm.addEventListener("submit", (event) => {
     .catch((error) => {
       console.error("Erro ao criar tarefa:", error);
     });
+});
 });
