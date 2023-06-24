@@ -10,7 +10,7 @@ function buscarTarefas() {
   axios
     .get("http://localhost:8080/tasks/all", {
       headers: {
-        Authorization: authHeader
+        'Authorization': authHeader
       }
     })
     .then((response) => {
