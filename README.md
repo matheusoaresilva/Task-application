@@ -4,6 +4,7 @@ Este é um aplicativo de gerenciamento de tarefas desenvolvido que permite aos u
 
 ## Funcionalidades
 
+- **Criar e Logar usuario**: Os usuarios podem criar uma conta fornecendo nome, username e senha. E logar informando username e senha
 - **Criar tarefa**: Os usuários podem criar novas tarefas fornecendo um título, descrição, status e categoria.
 
 - **Editar tarefa**: Os usuários podem editar as tarefas existentes, alterando qualquer um dos campos (título, descrição, status e categoria).
@@ -26,6 +27,7 @@ Este é um aplicativo de gerenciamento de tarefas desenvolvido que permite aos u
 
 - **Java 17**
 - **Spring Boot**
+- **Spring Security**: para autenticação e autorização de usuarios
 - **Postman**: para testar as funcionalidades da API.
 - **MySQL**: para armazenar os dados das tarefas.
 - **JUnit5** e **Mockito**: para escrever e executar testes unitários.
